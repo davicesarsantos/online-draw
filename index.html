@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Online Draw</title>
+
+    <meta
+        name="description"
+        content="A beautiful and simple online random draw tool."
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+
+    <div class="background">
+
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="orb orb-three"></div>
+
+        <div class="grid"></div>
+
+        <div id="particles"></div>
+
+    </div>
+
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div class="mini-logo">
+
+            <div class="mini-logo-icon">
+                ✦
+            </div>
+
+            <span>
+                Online <b>Draw</b>
+            </span>
+
+        </div>
+
+
+        <div class="top-actions">
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                <span data-i18n="ready">
+                    Ready to draw
+                </span>
+
+            </div>
+
+
+            <div class="language-wrapper">
+
+                <button
+                    id="languageButton"
+                    class="language-button"
+                >
+
+                    <span id="languageFlag">
+                        🇺🇸
+                    </span>
+
+                    <span id="languageText">
+                        EN
+                    </span>
+
+                    <span class="chevron">
+                       ⌄
+                    </span>
+
+                </button>
+
+
+                <div
+                    id="languageMenu"
+                    class="language-menu"
+                >
+
+                    <button data-language="en">
+                        🇺🇸
+                        <span>English</span>
+                    </button>
+
+                    <button data-language="pt">
+                        🇧🇷
+                        <span>Português</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="main-container">
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-badge">
+
+                <span class="badge-sparkle">
+                    ✦
+                </span>
+
+                <span data-i18n="badge">
+                    SIMPLE • FAIR • RANDOM
+                </span>
+
+            </div>
+
+
+            <h1>
+
+                <span data-i18n="heroLineOne">
+                    Let fate
+                </span>
+
+                <span class="gradient-text">
+                    <span data-i18n="heroLineTwo">
+                        choose.
+                    </span>
+                </span>
+
+            </h1>
+
+
+            <p data-i18n="heroDescription">
+                A beautiful and simple way to pick a random winner.
+            </p>
+
+        </section>
+
+
+        <!-- DRAW CARD -->
+
+        <section class="draw-card">
+
+
+            <!-- CARD HEADER -->
+
+            <div class="draw-card-header">
+
+                <div>
+
+                    <div class="card-title-row">
+
+                        <div class="card-icon">
+                            ✦
+                        </div>
+
+                        <h2 data-i18n="drawTitle">
+                            Create a draw
+                        </h2>
+
+                    </div>
+
+                    <p data-i18n="drawDescription">
+                        Add the people participating in your draw.
+                    </p>
+
+                </div>
+
+
+                <div class="counter">
+
+                    <span id="count">
+                        0
+                    </span>
+
+                    <small data-i18n="people">
+                        PEOPLE
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- INPUT -->
+
+            <div class="input-section">
+
+                <div class="input-container">
+
+                    <div class="input-icon">
+                        +
+                    </div>
+
+                    <input
+                        type="text"
+                        id="nameInput"
+                        autocomplete="off"
+                        data-placeholder="inputPlaceholder"
+                        placeholder="Enter a participant name..."
+                    >
+
+                    <button
+                        id="addButton"
+                        class="add-button"
+                    >
+
+                        <span data-i18n="add">
+                            Add
+                        </span>
+
+                        <span class="button-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="errorMessage"
+                    class="error-message"
+                ></div>
+
+            </div>
+
+
+            <!-- PARTICIPANTS HEADER -->
+
+            <div class="participants-header">
+
+                <div class="participants-title">
+
+                    <span data-i18n="participants">
+                        Participants
+                    </span>
+
+                    <span class="title-line"></span>
+
+                </div>
+
+
+                <button
+                    id="clearButton"
+                    class="clear-button"
+                >
+
+                    <span class="trash-icon">
+                        ♲
+                    </span>
+
+                    <span data-i18n="clear">
+                        Clear all
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- PARTICIPANTS -->
+
+            <div
+                id="participantsList"
+                class="participants-list"
+            >
+
+                <div class="empty-state">
+
+                    <div class="empty-circle">
+
+                        <span>
+                            ✦
+                        </span>
+
+                    </div>
+
+                    <h3 data-i18n="emptyTitle">
+                        No participants yet
+                    </h3>
+
+                    <p data-i18n="emptyDescription">
+                        Add some names above to get started.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- DRAW -->
+
+            <button
+                id="drawButton"
+                class="draw-button"
+            >
+
+                <span class="draw-button-glow"></span>
+
+                <span class="dice">
+                    ⚄
+                </span>
+
+                <span data-i18n="drawWinner">
+                    Draw winner
+                </span>
+
+                <span class="draw-arrow">
+                    →
+                </span>
+
+            </button>
+
+
+            <div class="fair-note">
+
+                <span>
+                    🔒
+                </span>
+
+                <span data-i18n="fairNote">
+                    Every participant has an equal chance.
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULT -->
+
+        <section
+            id="result"
+            class="result hidden"
+        >
+
+            <div class="result-glow"></div>
+
+
+            <div class="confetti-container" id="confetti"></div>
+
+
+            <div class="winner-crown">
+                ♛
+            </div>
+
+
+            <div
+                class="winner-small"
+                data-i18n="winnerLabel"
+            >
+                THE WINNER IS
+            </div>
+
+
+            <h2 id="winnerName">
+                Davi
+            </h2>
+
+
+            <div class="winner-line"></div>
+
+
+            <p data-i18n="congratulations">
+                Congratulations! 🎉
+            </p>
+
+
+            <button
+                id="newDrawButton"
+                class="again-button"
+            >
+
+                <span>
+                    ↻
+                </span>
+
+                <span data-i18n="drawAgain">
+                    Draw again
+                </span>
+
+            </button>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <span data-i18n="footerText">
+                Made for simple, fair and fun draws.
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- CREDIT -->
+
+    <div class="credits">
+
+        <span>by</span>
+
+        <strong>Davi</strong>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
